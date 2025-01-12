@@ -1,13 +1,23 @@
 // la primera linea que se tiene que crear.
 // importamos express.
 const express = require("express");
-
 // con esto ya tenemos nuestra aplicación de express
 const app = express();
 // Importamos infoCursos.
-const { infoCursos } = require("./cursos.js");
+const { infoCursos } = require("./datos/cursos.js");
 
-// AQUÍ EMPIEZAN LAS RUTAS
+// Routers
+//.use() es una función que le dice a express que use ("/cursos/programacion") como ruta
+//app.use("/cursos/programacion", routerProgramacion);
+
+
+const routerMatematicas = require("./routers/matematicas.js")
+app.use("/cursos/matematicas", routerMatematicas); // llamamos a la varieble.
+
+const routerProgramacion = require("./routers/programacion.js")
+app.use("/cursos/programacion", routerProgramacion); // llamamos a la varieble.
+
+//********************  AQUÍ EMPIEZAN LAS RUTAS  **********************
 
 //get---> método
 // /----> ruta
@@ -19,41 +29,6 @@ app.get("/cursos", (req, res) => {
   //res.send(infoCursos);
   res.send(JSON.stringify(infoCursos));
 });
-// Otra ruta
-app.get("/cursos/programacion", (req, res) => {
-  res.send(JSON.stringify(infoCursos.programacion));
-});
-// Otra ruta
-app.get("/cursos/matematicas", (req, res) => {
-  res.send(JSON.stringify(infoCursos.matematicas));
-});
-
-// PARAMETROS DE RUTA
-
-// Parametro url
-// : = parametro url
-app.get("/cursos/programacion/:lenguaje", (req, res) => {
-  const lenguaje = req.params.lenguaje;
-  const resultados = infoCursos.programacion.filter(
-    (cursos) => cursos.lenguaje === lenguaje
-  );
-  res.send(JSON.stringify(resultados));
-
-  if (resultados.length === 0) {
-    return res.status(404).send(`No se encontraron cursos de ${lenguaje}`);
-  }
-});
-// Tienes que meter en buscador el tipo de nivel: basico, intermedio...
-app.get("/cursos/matematicas/:nivel", (req, res)=>{
-    const nivel = req.params.nivel;
-    const resultados = infoCursos.matematicas.filter((curso) => curso.nivel === nivel);
-  if (resultados.length === 0) {
-        return res.status(404).send(`No se encontraron titulos de ${nivel}`);
-      }
-
-    res.send(JSON.stringify(resultados)); 
-})
-
 
 
 
@@ -63,5 +38,5 @@ const PUERTO = process.env.PORT || 3000;
 
 // La app escucha el puerto (listen)
 app.listen(PUERTO, () => {
-  console.log(`El servidoresta escuchando en el puerto ${PUERTO}...`);
+  console.log(`El servidor esta escuchando en el puerto ${PUERTO}...`);
 });

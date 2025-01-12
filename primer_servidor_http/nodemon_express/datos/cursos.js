@@ -36,11 +36,18 @@ let infoCursos = {
             id: 2,
             titulo: "Aprende Algebra",
             lenguaje:"algebra",
-            visitas: 15722,
+            visitas: 15782,
             nivel: "intermedio"
+        },
+        {
+            id: 3,
+            titulo: "Aprende Algebra",
+            lenguaje:"algebra",
+            visitas: 15725,
+            nivel: "basico"
         }
     ]
 }
 
-//exportamos infoCursos
+//exportamos
 module.exports.infoCursos = infoCursos;
