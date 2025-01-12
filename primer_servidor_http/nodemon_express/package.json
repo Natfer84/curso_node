@@ -1,0 +1,14 @@
+{
+  "name": "nodemon_express",
+  "version": "1.0.0",
+  "description": "MI primer servidor creado con NOde.js y express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nat",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
