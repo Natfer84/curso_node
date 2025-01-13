@@ -1,7 +1,8 @@
 const express = require ("express");
-const {matematicas} = require("../datos/cursos.js").infoCursos;
+const {matematicas} = require("../datos/cursos.js").infoCursos;// Agregamos la propiedad ingoCursos y con destructuting {matematicas} accedemos directamente a matemáticas del objeto.
 
 // Routers
+
 //.use() es una función que le dice a express que use ("/cursos/programacion") como ruta
 const routerMatematicas = express.Router();
 

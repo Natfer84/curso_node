@@ -7,12 +7,11 @@ const app = express();
 const { infoCursos } = require("./datos/cursos.js");
 
 // Routers
-//.use() es una función que le dice a express que use ("/cursos/programacion") como ruta
-//app.use("/cursos/programacion", routerProgramacion);
 
 
-const routerMatematicas = require("./routers/matematicas.js")
-app.use("/cursos/matematicas", routerMatematicas); // llamamos a la varieble.
+const routerMatematicas = require("./routers/matematicas.js")//app.use("/cursos/programacion", routerProgramacion);
+app.use("/cursos/matematicas", routerMatematicas); // llamamos a la varieble.//.use() es una función que le dice a express que use ("/cursos/programacion") como ruta
+
 
 const routerProgramacion = require("./routers/programacion.js")
 app.use("/cursos/programacion", routerProgramacion); // llamamos a la varieble.
@@ -24,10 +23,8 @@ app.use("/cursos/programacion", routerProgramacion); // llamamos a la varieble.
 app.get("/", (req, res) => {
   res.send(`Mi primer servidor con Express con rutas y metodos.`);
 });
-// Agregar una nueva ruta
-app.get("/cursos", (req, res) => {
-  //res.send(infoCursos);
-  res.send(JSON.stringify(infoCursos));
+app.get("/cursos", (req, res) => {  // Agregar una nueva ruta
+  res.send(JSON.stringify(infoCursos));  //res.send(); realice una respuesta en formato json de nfoCursos
 });
 
 

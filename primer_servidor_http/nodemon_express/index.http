@@ -1,0 +1,21 @@
+POST http://localhost:3000/cursos/programacion HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 4,
+    "titulo": "Aprende javascript",
+    "lenguaje":"javascript",
+    "visitas": 15725,
+    "nivel": "intermedio"
+} 
+###
+PUT  http://localhost:3000/cursos/programacion/3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 3,
+    "titulo": "Aprende javascript con natalia",
+    "lenguaje":"javascript",
+    "visitas": 15729995,
+    "nivel": "intermedio"
+} 
